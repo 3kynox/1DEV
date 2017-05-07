@@ -23,6 +23,7 @@ def main():
     clock = pygame.time.Clock()
     size = width, height = 1024, 768
     screen = pygame.display.set_mode(size)
+    pygame.display.set_caption("Night Mission - PinBall")
 
 # Main Loop
     while running:
