@@ -25,5 +25,3 @@ And then :
 - git diff
 - git log
 
-
-MesCouillesAuSki
