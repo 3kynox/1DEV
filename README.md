@@ -6,7 +6,7 @@
 - Chose an empty folder location (DOS commands: CD <folder> - CD .. - DIR)
 
 ## Cloning the Repository
-- git clone https://github.com/3kynox/jcipher
+- git clone https://github.com/3kynox/1DEV
 - cd jcipher (go inside jcipher folder newly created by clone)
 
 ## Pulling changes
