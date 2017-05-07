@@ -7,7 +7,7 @@
 
 ## Cloning the Repository
 - git clone https://github.com/3kynox/1DEV
-- cd jcipher (go inside jcipher folder newly created by clone)
+- cd 1DEV (go inside 1DEV folder newly created by clone)
 
 ## Pulling changes
 - git pull (import last commits)
