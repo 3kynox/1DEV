@@ -26,7 +26,7 @@ def main():
     pygame.display.set_caption("Night Mission - PinBall")
 
     # Images loading
-    surface = pygame.image.load("images/nightmission.jpg")
+    surface = pygame.image.load("images/background.jpg")
 
     # Physics
     space = pymunk.Space()
@@ -42,7 +42,7 @@ def main():
                     ,pymunk.Segment(space.static_body, (50.0, 550.0), (300.0, 600.0), 1.0)
                     ,pymunk.Segment(space.static_body, (300.0, 600.0), (550.0, 550.0), 1.0)
                     ,pymunk.Segment(space.static_body, (300.0, 420.0), (400.0, 400.0), 1.0)]
-    
+
     for line in static_lines:
         line.elasticity = 0.7
         line.group = 1
@@ -63,5 +63,5 @@ def main():
 
         screen.blit(surface, (0, 0))
         pygame.display.flip()
-                
+
 if __name__ == '__main__': main()
