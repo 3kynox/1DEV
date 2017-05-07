@@ -25,10 +25,28 @@ def main():
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("Night Mission - PinBall")
 
+    # Images loading
+    surface = pygame.image.load("images/nightmission.jpg")
+
     # Physics
     space = pymunk.Space()
     space.gravity = (0.0, -900.0)
     draw_options = pymunk.pygame_util.DrawOptions(screen)
+
+    # Balls
+    balls = []
+
+    # walls
+    static_lines = [pymunk.Segment(space.static_body, (150, 100.0), (50.0, 550.0), 1.0)
+                    ,pymunk.Segment(space.static_body, (450.0, 100.0), (550.0, 550.0), 1.0)
+                    ,pymunk.Segment(space.static_body, (50.0, 550.0), (300.0, 600.0), 1.0)
+                    ,pymunk.Segment(space.static_body, (300.0, 600.0), (550.0, 550.0), 1.0)
+                    ,pymunk.Segment(space.static_body, (300.0, 420.0), (400.0, 400.0), 1.0)]
+    
+    for line in static_lines:
+        line.elasticity = 0.7
+        line.group = 1
+    space.add(static_lines)
 
 # Main Loop
     while running:
@@ -42,5 +60,8 @@ def main():
                 if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit()
+
+        screen.blit(surface, (0, 0))
+        pygame.display.flip()
                 
 if __name__ == '__main__': main()
