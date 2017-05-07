@@ -23,6 +23,12 @@ def main():
     clock = pygame.time.Clock()
     size = width, height = 1024, 768
     screen = pygame.display.set_mode(size)
+    pygame.display.set_caption("Night Mission - PinBall")
+
+    # Physics
+    space = pymunk.Space()
+    space.gravity = (0.0, -900.0)
+    draw_options = pymunk.pygame_util.DrawOptions(screen)
 
 # Main Loop
     while running:
