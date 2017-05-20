@@ -7,7 +7,7 @@ __version__ = "$Id:$"
 __docformat__ = "reStructuredText"
 
 # -*- coding: utf-8 -*-
-import sys, random, pygame
+import os, sys, random, pygame
 from pygame.locals import *
 from pygame.color import *
 
@@ -34,6 +34,38 @@ def main():
     space = pymunk.Space()
     space.gravity = (0.0, -900.0)
     draw_options = pymunk.pygame_util.DrawOptions(screen)
+
+    fp = [(20,-20), (-120, 0), (20,20)]
+    mass = 100
+    moment = pymunk.moment_for_poly(mass, fp)
+
+    # Right flipper
+    r_flipper_body = pymunk.Body(mass, moment)
+    r_flipper_body.position = 450, 100
+    r_flipper_shape = pymunk.Poly(r_flipper_body, fp)
+    space.add(r_flipper_body, r_flipper_shape)
+
+    r_flipper_joint_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+    r_flipper_joint_body.position = r_flipper_body.position 
+    j = pymunk.PinJoint(r_flipper_body, r_flipper_joint_body, (0,0), (0,0))
+    #todo: tweak values of spring better
+    s = pymunk.DampedRotarySpring(r_flipper_body, r_flipper_joint_body, 0.15, 20000000,900000)
+    space.add(j, s)
+
+    # Left flipper
+    l_flipper_body = pymunk.Body(mass, moment)
+    l_flipper_body.position = 150, 100
+    l_flipper_shape = pymunk.Poly(l_flipper_body, [(-x,y) for x,y in fp])
+    space.add(l_flipper_body, l_flipper_shape)
+
+    l_flipper_joint_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+    l_flipper_joint_body.position = l_flipper_body.position 
+    j = pymunk.PinJoint(l_flipper_body, l_flipper_joint_body, (0,0), (0,0))
+    s = pymunk.DampedRotarySpring(l_flipper_body, l_flipper_joint_body, -0.15, 20000000, 900000)
+    space.add(j, s)
+
+    r_flipper_shape.group = l_flipper_shape.group = 1
+    r_flipper_shape.elasticity = l_flipper_shape.elasticity = 0.4
 
     # Balls
     balls = []
@@ -82,11 +114,11 @@ def main():
     pygame.draw.rect(surface, Blue,[150,720,80,40],2)
 
     # Plane 1
-    plane1 = pygame.image.load("images/avion_1.png")
+    plane1 = pygame.image.load(os.path.join(os.path.dirname(__file__), "images/avion_1.png"))
     surface.blit(plane1, [10,550])
 
     # Plane 2
-    plane2 = pygame.image.load('images/avion_2.png')
+    plane2 = pygame.image.load(os.path.join(os.path.dirname(__file__), "images/avion_2.png"))
     surface.blit(plane2, [760, 200])
 
     # Left border
