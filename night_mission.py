@@ -7,9 +7,10 @@ __version__ = "$Id:$"
 __docformat__ = "reStructuredText"
 
 # -*- coding: utf-8 -*-
-import os, sys, random, pygame
+import sys, random, pygame
 from pygame.locals import *
 from pygame.color import *
+from drawStuff import *
 
 import pymunk
 from pymunk import Vec2d
@@ -26,14 +27,13 @@ def main():
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("Night Mission - PinBall")
     surface = pygame.Surface(screen.get_size())
-    ### inutile - laisse pour plus tard au besoin ###
-    #surface = surface.convert()
-    #surface.fill((0,0,0))
+    surface = surface.convert()
+    surface.fill((0, 0, 0))
 
     # Physics
     space = pymunk.Space()
     space.gravity = (0.0, -900.0)
-    draw_options = pymunk.pygame_util.DrawOptions(screen)
+    draw_options = pymunk.pygame_util.DrawOptions(surface)
 
     fp = [(20,-20), (-120, 0), (20,20)]
     mass = 100
@@ -48,7 +48,6 @@ def main():
     r_flipper_joint_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
     r_flipper_joint_body.position = r_flipper_body.position
     j = pymunk.PinJoint(r_flipper_body, r_flipper_joint_body, (0,0), (0,0))
-    #todo: tweak values of spring better
     s = pymunk.DampedRotarySpring(r_flipper_body, r_flipper_joint_body, 0.15, 20000000,900000)
     space.add(j, s)
 
@@ -71,6 +70,7 @@ def main():
     balls = []
 
     # Some Walls
+<<<<<<< HEAD
     static_lines = [pymunk.Segment(space.static_body, (150, 100.0), (50.0, 550.0), 1.0)
                     ,pymunk.Segment(space.static_body, (450.0, 100.0), (550.0, 550.0), 1.0)
                     ,pymunk.Segment(space.static_body, (50.0, 550.0), (300.0, 600.0), 1.0)
@@ -215,7 +215,25 @@ def main():
     pygame.draw.rect(surface, White, [760,680,260,80], 2)
 
 # Main Loop
+=======
+    #static_lines = [pymunk.Segment(space.static_body, (150, 100.0), (50.0, 550.0), 1.0)
+    #                ,pymunk.Segment(space.static_body, (450.0, 100.0), (550.0, 550.0), 1.0)
+    #                ,pymunk.Segment(space.static_body, (50.0, 550.0), (300.0, 600.0), 1.0)
+    #                ,pymunk.Segment(space.static_body, (300.0, 600.0), (550.0, 550.0), 1.0)
+    #                ,pymunk.Segment(space.static_body, (300.0, 420.0), (400.0, 400.0), 1.0)]
+
+    #for line in static_lines:
+    #    line.elasticity = 0.7
+    #    line.group = 1
+    #space.add(static_lines)
+
+    ### Main Loop ###
+>>>>>>> 0892cc44f502b79889cfb64ff41f7bb8a0f85504
     while running:
+        ### Clear screen and draw stuff
+        surface.fill((0, 0, 0))
+        drawStuff(surface)
+        
         # Events loop
         for event in pygame.event.get():
             # Manage quit / closing window event
@@ -226,7 +244,24 @@ def main():
                 if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit()
+                elif event.key == K_j:
+                    r_flipper_body.apply_impulse_at_local_point(Vec2d.unit() * 40000, (-100,0))
+                elif event.key == K_f:
+                    l_flipper_body.apply_impulse_at_local_point(Vec2d.unit() * -40000, (-100,0))
+        
+        ### Draw stuff
+        space.debug_draw(draw_options)    
+        
+        r_flipper_body.position = 450, 100
+        l_flipper_body.position = 150, 100
+        r_flipper_body.velocity = l_flipper_body.velocity = 0,0
 
+        ### Update physics
+        dt = 1.0/60.0/5.
+        for x in range(5):
+            space.step(dt)
+
+        clock.tick(50)
         screen.blit(surface, (0, 0))
         pygame.display.flip()
 
