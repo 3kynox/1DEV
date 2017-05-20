@@ -159,8 +159,8 @@ def main():
     pygame.draw.lines(surface, White, True, [[660,470],[670,460],[680,480],[680,520]],2)
 
     # Right trigger
-    pygame.draw.polygon(surface, Green, [[590,690],[635,690],[635,705],[650,690],[688,690],[688,655]])
-    pygame.draw.lines(surface, White, False, [[590,690],[635,690],[635,705],[650,690],[688,690]],3)
+    pygame.draw.polygon(surface, Green, [[590,690],[635,690],[635,705],[640,690],[688,690],[688,655]])
+    pygame.draw.lines(surface, White, False, [[688,655],[590,690],[635,690],[635,705],[640,690],[688,690],[688,655]],3)
     pygame.draw.lines(surface, White, False, [[690,690],[690,653],[688,655],[688,640]],4)
     pygame.draw.line(surface, Green, [683,660],[683,620],6)
 
