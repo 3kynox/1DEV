@@ -46,7 +46,7 @@ def main():
     space.add(r_flipper_body, r_flipper_shape)
 
     r_flipper_joint_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
-    r_flipper_joint_body.position = r_flipper_body.position 
+    r_flipper_joint_body.position = r_flipper_body.position
     j = pymunk.PinJoint(r_flipper_body, r_flipper_joint_body, (0,0), (0,0))
     #todo: tweak values of spring better
     s = pymunk.DampedRotarySpring(r_flipper_body, r_flipper_joint_body, 0.15, 20000000,900000)
@@ -59,7 +59,7 @@ def main():
     space.add(l_flipper_body, l_flipper_shape)
 
     l_flipper_joint_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
-    l_flipper_joint_body.position = l_flipper_body.position 
+    l_flipper_joint_body.position = l_flipper_body.position
     j = pymunk.PinJoint(l_flipper_body, l_flipper_joint_body, (0,0), (0,0))
     s = pymunk.DampedRotarySpring(l_flipper_body, l_flipper_joint_body, -0.15, 20000000, 900000)
     space.add(j, s)
@@ -128,8 +128,8 @@ def main():
     # Inner-left
     pygame.draw.polygon(surface, Blue, [[266,375],[312,358],[266,260]])
     pygame.draw.lines(surface, White, False, [[266,375],[312,358],[266,260]],4)
-    pygame.draw.polygon(surface, Blue, [[335,520],[335,610],[330,620],[335,630],[360,645],[370,635]])
-    pygame.draw.lines(surface, White, True, [[335,520],[335,610],[330,620],[335,630],[360,645],[370,635]], 3)
+    pygame.draw.polygon(surface, Blue, [[340,520],[340,610],[335,620],[350,650],[385,660],[400,645]])
+    pygame.draw.lines(surface, White, True, [[340,520],[340,610],[335,620],[350,650],[385,660],[400,645]], 3)
     pygame.draw.rect(surface, Purple, [254,540,20,10])
     pygame.draw.rect(surface, Purple, [300,540,20,10])
     pygame.draw.line(surface, Purple, [254,530],[254,560], 2)
@@ -153,10 +153,10 @@ def main():
     pygame.draw.lines(surface, White, False, [[712,470],[688,420],[703,370],[668,320],[712,250]],4)
     pygame.draw.line(surface, White, [690,650],[715,650],2)
     pygame.draw.line(surface, Purple, [690,690],[690,768],4)
-    pygame.draw.polygon(surface, Blue, [[620,650],[630,655],[660,640],[660,550],[655,540]])
-    pygame.draw.lines(surface, White, True, [[620,650],[630,655],[660,640],[660,550],[655,540]], 3)
-    pygame.draw.polygon(surface, Purple, [[660,470],[670,460],[680,480],[680,520]])
-    pygame.draw.lines(surface, White, True, [[660,470],[670,460],[680,480],[680,520]],2)
+    pygame.draw.polygon(surface, Blue, [[590,635],[610,650],[660,635],[660,540],[650,520]])
+    pygame.draw.lines(surface, White, True, [[590,635],[610,650],[660,635],[660,540],[650,520]], 3)
+    #pygame.draw.polygon(surface, Purple, [[670,490],[680,480],[690,500],[690,530]])
+    #pygame.draw.lines(surface, White, True, [[660,470],[670,460],[680,480],[680,520]],2)
 
     # Right trigger
     pygame.draw.polygon(surface, Green, [[590,690],[635,690],[635,705],[640,690],[688,690],[688,655]])
