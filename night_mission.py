@@ -25,10 +25,7 @@ def main():
     clock = pygame.time.Clock()
     size = width, height = 1024, 768
     screen = pygame.display.set_mode(size)
-    pygame.display.set_caption("Night Mission - PinBall")
     surface = pygame.Surface(screen.get_size())
-    surface = surface.convert()
-    surface.fill((0, 0, 0))
 
     # Physics
     space = pymunk.Space()
@@ -80,6 +77,14 @@ def main():
     #    line.elasticity = 0.7
     #    line.group = 1
     #space.add(static_lines)
+
+    # "bumpers"
+    #for p in [(240,500), (360,500)]:
+    #    body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+    #    body.position = p
+    #    shape = pymunk.Circle(body, 10)
+    #    shape.elasticity = 1.5
+    #    space.add(shape)
 
     ### Main Loop ###
     while running:
@@ -138,5 +143,6 @@ def main():
         clock.tick(50)
         screen.blit(surface, (0, 0))
         pygame.display.flip()
+        pygame.display.set_caption("Night Mission - PinBall - " + "FPS: " + str(clock.get_fps()))
 
 if __name__ == '__main__': main()
