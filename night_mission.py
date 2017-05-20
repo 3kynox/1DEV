@@ -86,8 +86,8 @@ def main():
     surface.blit(plane1, [10,550])
 
     # Plane 2
-    #plane2 = pygame.image.load('1DEV/images/avion_2.png')
-    #surface.blit(plane2, [760, 200])
+    plane2 = pygame.image.load('images/avion_2.png')
+    surface.blit(plane2, [760, 200])
 
     # Left border
     pygame.draw.line(surface, White, [251,385],[250,768],4)
