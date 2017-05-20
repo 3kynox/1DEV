@@ -36,33 +36,6 @@ def main():
     mass = 100
     moment = pymunk.moment_for_poly(mass, fp)
 
-    # Right flipper
-    r_flipper_body = pymunk.Body(mass, moment)
-    r_flipper_body.position = 450, 100
-    r_flipper_shape = pymunk.Poly(r_flipper_body, fp)
-    space.add(r_flipper_body, r_flipper_shape)
-
-    r_flipper_joint_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
-    r_flipper_joint_body.position = r_flipper_body.position
-    j = pymunk.PinJoint(r_flipper_body, r_flipper_joint_body, (0,0), (0,0))
-    s = pymunk.DampedRotarySpring(r_flipper_body, r_flipper_joint_body, 0.15, 20000000,900000)
-    space.add(j, s)
-
-    # Left flipper
-    l_flipper_body = pymunk.Body(mass, moment)
-    l_flipper_body.position = 150, 100
-    l_flipper_shape = pymunk.Poly(l_flipper_body, [(-x,y) for x,y in fp])
-    space.add(l_flipper_body, l_flipper_shape)
-
-    l_flipper_joint_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
-    l_flipper_joint_body.position = l_flipper_body.position
-    j = pymunk.PinJoint(l_flipper_body, l_flipper_joint_body, (0,0), (0,0))
-    s = pymunk.DampedRotarySpring(l_flipper_body, l_flipper_joint_body, -0.15, 20000000, 900000)
-    space.add(j, s)
-
-    r_flipper_shape.group = l_flipper_shape.group = 1
-    r_flipper_shape.elasticity = l_flipper_shape.elasticity = 0.4
-
     # Balls
     balls = []
 
@@ -85,6 +58,33 @@ def main():
     #    shape = pymunk.Circle(body, 10)
     #    shape.elasticity = 1.5
     #    space.add(shape)
+
+    # Right flipper
+    r_flipper_body = pymunk.Body(mass, moment)
+    r_flipper_body.position = 650, 90
+    #r_flipper_shape = pymunk.Poly(r_flipper_body, fp)
+    space.add(r_flipper_body, r_flipper_shape)
+
+    r_flipper_joint_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+    r_flipper_joint_body.position = r_flipper_body.position
+    j = pymunk.PinJoint(r_flipper_body, r_flipper_joint_body, (0,0), (0,0))
+    s = pymunk.DampedRotarySpring(r_flipper_body, r_flipper_joint_body, 0.15, 20000000,900000)
+    space.add(j, s)
+
+    # Left flipper
+    l_flipper_body = pymunk.Body(mass, moment)
+    l_flipper_body.position = 350, 90
+    l_flipper_shape = pymunk.Poly(l_flipper_body, [(-x,y) for x,y in fp])
+    space.add(l_flipper_body, l_flipper_shape)
+
+    l_flipper_joint_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+    l_flipper_joint_body.position = l_flipper_body.position
+    j = pymunk.PinJoint(l_flipper_body, l_flipper_joint_body, (0,0), (0,0))
+    s = pymunk.DampedRotarySpring(l_flipper_body, l_flipper_joint_body, -0.15, 20000000, 900000)
+    space.add(j, s)
+
+    r_flipper_shape.group = l_flipper_shape.group = 1
+    r_flipper_shape.elasticity = l_flipper_shape.elasticity = 0.4
 
     ### Main Loop ###
     while running:
@@ -111,7 +111,7 @@ def main():
                     radius = 25
                     inertia = pymunk.moment_for_circle(mass, 0, radius, (0,0))
                     body = pymunk.Body(mass, inertia)
-                    x = random.randint(115,350)
+                    x = random.randint(315,650)
                     body.position = x, 400
                     shape = pymunk.Circle(body, radius, (0,0))
                     shape.elasticity = 0.95
@@ -121,8 +121,8 @@ def main():
         # Display Rasta Rockets
         space.debug_draw(draw_options)
 
-        r_flipper_body.position = 450, 100
-        l_flipper_body.position = 150, 100
+        r_flipper_body.position = 650, 90
+        l_flipper_body.position = 350, 90
         r_flipper_body.velocity = l_flipper_body.velocity = 0,0
 
         # Remove any balls outside
