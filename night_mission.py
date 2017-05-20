@@ -81,9 +81,9 @@ def main():
     pygame.draw.rect(surface, Blue,[20,720,80,40],2)
     pygame.draw.rect(surface, Blue,[150,720,80,40],2)
 
-    #plane 1
-    #plane1 = pygame.image.load("images/avion_1.png")
-    #surface.blit(plane1, [10,550])
+    # Plane 1
+    plane1 = pygame.image.load("images/avion_1.png")
+    surface.blit(plane1, [10,550])
 
     # Plane 2
     #plane2 = pygame.image.load('1DEV/images/avion_2.png')
