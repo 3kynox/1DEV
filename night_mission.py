@@ -20,7 +20,7 @@ pygame.init()
 def main():
     # Init vars
     running = True
-    progress = True 
+    progress = True
     clock = pygame.time.Clock()
     size = width, height = 1024, 768
     screen = pygame.display.set_mode(size)
@@ -72,7 +72,7 @@ def main():
     surface.blit(font1.render('BALL', False, White),[150,690])
 
     ### IMAGES ###
-    
+
     # Left panel
     pygame.draw.rect(surface, Blue,[20,50,200,40],2)
     pygame.draw.rect(surface, Blue,[20,150,200,40],2)
@@ -96,8 +96,8 @@ def main():
     # Inner-left
     pygame.draw.polygon(surface, Blue, [[266,375],[312,358],[266,260]])
     pygame.draw.lines(surface, White, False, [[266,375],[312,358],[266,260]],4)
-    pygame.draw.polygon(surface, Blue, [[335,540],[335,630],[330,640],[335,650],[360,665],[370,655]])
-    pygame.draw.lines(surface, White, True, [[335,540],[335,630],[330,640],[335,650],[360,665],[370,655]], 3)
+    pygame.draw.polygon(surface, Blue, [[335,520],[335,610],[330,620],[335,630],[360,645],[370,635]])
+    pygame.draw.lines(surface, White, True, [[335,520],[335,610],[330,620],[335,630],[360,645],[370,635]], 3)
     pygame.draw.rect(surface, Purple, [254,540,20,10])
     pygame.draw.rect(surface, Purple, [300,540,20,10])
     pygame.draw.line(surface, Purple, [254,530],[254,560], 2)
@@ -127,14 +127,14 @@ def main():
     pygame.draw.lines(surface, White, True, [[660,470],[670,460],[680,480],[680,520]],2)
 
     # Right trigger
-    pygame.draw.polygon(surface, Green, [[620,690],[655,690],[660,705],[660,690],[688,690],[688,655]])
-    pygame.draw.lines(surface, White, False, [[688,655],[620,691],[655,691],[660,706],[660,691],[688,690]],3)
-    pygame.draw.lines(surface, White, False, [[690,690],[690,653],[688,653],[688,640]],4)
+    pygame.draw.polygon(surface, Green, [[590,690],[635,690],[635,705],[650,690],[688,690],[688,655]])
+    pygame.draw.lines(surface, White, False, [[590,690],[635,690],[635,705],[650,690],[688,690]],3)
+    pygame.draw.lines(surface, White, False, [[690,690],[690,653],[688,655],[688,640]],4)
     pygame.draw.line(surface, Green, [683,660],[683,620],6)
 
     # Left trigger
-    pygame.draw.polygon(surface, Green, [[300,620],[300,690],[320,690],[320,705],[325,690],[360,690],[320,670]])
-    pygame.draw.lines(surface, White, True, [[300,620],[300,690],[320,690],[320,705],[325,690],[360,690],[320,670]],3)
+    pygame.draw.polygon(surface, Green, [[300,600],[300,690],[340,690],[340,705],[350,690],[400,690],[330,670]])
+    pygame.draw.lines(surface, White, True, [[300,600],[300,690],[340,690],[340,705],[350,690],[400,690],[330,670]],3)
 
     # Top-left module
     pygame.draw.line(surface, White, [292,70],[292,250],6)
