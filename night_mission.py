@@ -25,8 +25,10 @@ def main():
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("Night Mission - PinBall")
 
-    # Images loading
-    surface = pygame.image.load("images/background.jpg")
+    # Images
+    # surface = pygame.image.load("images/background.jpg")
+
+    # Sounds
 
     # Physics
     space = pymunk.Space()
@@ -61,7 +63,7 @@ def main():
                     pygame.quit()
                     sys.exit()
 
-        screen.blit(surface, (0, 0))
+        # screen.blit(surface, (0, 0))
         pygame.display.flip()
 
 if __name__ == '__main__': main()
