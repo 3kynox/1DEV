@@ -77,12 +77,19 @@ def main():
     space.add(right_shape)
 
     # "bumpers"
-    #for p in [(240,500), (360,500)]:
-    #    body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
-    #    body.position = p
-    #    shape = pymunk.Circle(body, 10)
-    #    shape.elasticity = 1.5
-    #    space.add(shape)
+    for p in [(460,570), (650,570), (550, 440)]:
+        body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+        body.position = p
+        shape = pymunk.Circle(body, 13)
+        shape.elasticity = 1.5
+        space.add(shape)
+
+    for p in [(430,430), (550,520)]:
+        body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+        body.position = p
+        shape = pymunk.Circle(body, 20)
+        shape.elasticity = 1.5
+        space.add(shape)
 
     # Right flipper
     r_flipper_body = pymunk.Body(mass, moment)
@@ -132,9 +139,9 @@ def main():
                     pygame.quit()
                     sys.exit()
                 elif event.key == K_j:
-                    r_flipper_body.apply_impulse_at_local_point(Vec2d.unit() * 40000, (-80,0))
+                    r_flipper_body.apply_impulse_at_local_point(Vec2d.unit() * 40000, (-100,0))
                 elif event.key == K_f:
-                    l_flipper_body.apply_impulse_at_local_point(Vec2d.unit() * -40000, (-80,0))
+                    l_flipper_body.apply_impulse_at_local_point(Vec2d.unit() * -40000, (-100,0))
                 elif event.type == KEYDOWN and event.key == K_b:
                     mass = 1
                     radius = 10
