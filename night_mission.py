@@ -11,6 +11,7 @@ import sys, random, pygame
 from pygame.locals import *
 from pygame.color import *
 from drawStuff import *
+from segments import *
 
 import pymunk
 from pymunk import Vec2d
@@ -39,42 +40,7 @@ def main():
     # Balls
     balls = []
 
-    # Global walls (Comment changer la couleur ? Ou rendre invisible ces lignes ?)
-    global_walls = [pymunk.Segment(space.static_body, (250, 0), (250, 383), 1.0),
-                    pymunk.Segment(space.static_body, (250, 383), (265, 390), 1.0),
-                    pymunk.Segment(space.static_body, (265, 390), (265, 718), 1.0),
-                    pymunk.Segment(space.static_body, (265, 718), (280, 738), 1.0),
-                    pymunk.Segment(space.static_body, (280, 738), (370, 738), 1.0),
-                    pymunk.Segment(space.static_body, (370, 738), (415, 765), 1.0),
-                    pymunk.Segment(space.static_body, (415, 765), (655, 765), 1.0),
-                    pymunk.Segment(space.static_body, (655, 765), (700, 753), 1.0),
-                    pymunk.Segment(space.static_body, (700, 753), (732, 713), 1.0),
-                    pymunk.Segment(space.static_body, (732, 713), (742, 648), 1.0),
-                    pymunk.Segment(space.static_body, (742, 648), (742, 0), 1.0)]
-
-    for line in global_walls:
-        line.elasticity = 0.7
-        line.group = 1
-    space.add(global_walls)
-
-    left_shape = [pymunk.Segment(space.static_body, (280, 258), (280, 168), 1.0),
-                   pymunk.Segment(space.static_body, (280, 168), (300, 168), 1.0),
-                   pymunk.Segment(space.static_body, (300, 168), (330, 100), 1.0),
-                   pymunk.Segment(space.static_body, (330, 100), (375, 87), 1.0)]
-
-    for line in left_shape:
-        line.elasticity = 0.7
-        line.group = 1
-    space.add(left_shape)
-
-    right_shape = [pymunk.Segment(space.static_body, (740, 118), (680, 118), 1.0),
-                   pymunk.Segment(space.static_body, (680, 118), (680, 114), 1.0),
-                   pymunk.Segment(space.static_body, (680, 114), (605, 86), 1.0)]
-
-    for line in right_shape:
-        line.elasticity = 0.7
-        line.group = 1
-    space.add(right_shape)
+    drawSegments(space)
 
     # "bumpers"
     for p in [(460,570), (650,570), (550, 440)]:
