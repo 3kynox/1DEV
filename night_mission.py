@@ -32,15 +32,15 @@ def main():
     space.gravity = (0.0, -900.0)
     draw_options = pymunk.pygame_util.DrawOptions(surface)
 
-    fp = [(12,-12), (-80, 0), (12,12)]
+    fp = [(5,-5), (-85, 0), (5,5)]
     mass = 100
     moment = pymunk.moment_for_poly(mass, fp)
 
     # Balls
     balls = []
 
-    # Some Walls
-    static_lines = [pymunk.Segment(space.static_body, (250, 0), (250, 383), 1.0),
+    # Global walls (Comment changer la couleur ? Ou rendre invisible ces lignes ?)
+    global_walls = [pymunk.Segment(space.static_body, (250, 0), (250, 383), 1.0),
                     pymunk.Segment(space.static_body, (250, 383), (265, 390), 1.0),
                     pymunk.Segment(space.static_body, (265, 390), (265, 718), 1.0),
                     pymunk.Segment(space.static_body, (265, 718), (280, 738), 1.0),
@@ -52,10 +52,10 @@ def main():
                     pymunk.Segment(space.static_body, (732, 713), (742, 648), 1.0),
                     pymunk.Segment(space.static_body, (742, 648), (742, 0), 1.0)]
 
-    for line in static_lines:
+    for line in global_walls:
         line.elasticity = 0.7
         line.group = 1
-    space.add(static_lines)
+    space.add(global_walls)
 
     # "bumpers"
     #for p in [(240,500), (360,500)]:
@@ -67,7 +67,7 @@ def main():
 
     # Right flipper
     r_flipper_body = pymunk.Body(mass, moment)
-    r_flipper_body.position = 600, 87
+    r_flipper_body.position = 600, 82
     r_flipper_shape = pymunk.Poly(r_flipper_body, fp)
     space.add(r_flipper_body, r_flipper_shape)
 
@@ -79,7 +79,7 @@ def main():
 
     # Left flipper
     l_flipper_body = pymunk.Body(mass, moment)
-    l_flipper_body.position = 380, 87
+    l_flipper_body.position = 380, 82
     l_flipper_shape = pymunk.Poly(l_flipper_body, [(-x,y) for x,y in fp])
     space.add(l_flipper_body, l_flipper_shape)
 
@@ -118,10 +118,10 @@ def main():
                     l_flipper_body.apply_impulse_at_local_point(Vec2d.unit() * -40000, (-80,0))
                 elif event.type == KEYDOWN and event.key == K_b:
                     mass = 1
-                    radius = 15
+                    radius = 8
                     inertia = pymunk.moment_for_circle(mass, 0, radius, (0,0))
                     body = pymunk.Body(mass, inertia)
-                    x = random.randint(315,650)
+                    x = random.randint(350,600)
                     body.position = x, 400
                     shape = pymunk.Circle(body, radius, (0,0))
                     shape.elasticity = 0.95
@@ -131,8 +131,8 @@ def main():
         # Display Rasta Rockets
         space.debug_draw(draw_options)
 
-        r_flipper_body.position = 600, 87
-        l_flipper_body.position = 380, 87
+        r_flipper_body.position = 600, 82
+        l_flipper_body.position = 380, 82
         r_flipper_body.velocity = l_flipper_body.velocity = 0,0
 
         # Remove any balls outside
