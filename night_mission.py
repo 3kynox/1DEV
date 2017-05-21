@@ -57,6 +57,25 @@ def main():
         line.group = 1
     space.add(global_walls)
 
+    left_shape = [pymunk.Segment(space.static_body, (280, 258), (280, 168), 1.0),
+                   pymunk.Segment(space.static_body, (280, 168), (300, 168), 1.0),
+                   pymunk.Segment(space.static_body, (300, 168), (330, 100), 1.0),
+                   pymunk.Segment(space.static_body, (330, 100), (375, 87), 1.0)]
+
+    for line in left_shape:
+        line.elasticity = 0.7
+        line.group = 1
+    space.add(left_shape)
+
+    right_shape = [pymunk.Segment(space.static_body, (740, 118), (680, 118), 1.0),
+                   pymunk.Segment(space.static_body, (680, 118), (680, 114), 1.0),
+                   pymunk.Segment(space.static_body, (680, 114), (605, 86), 1.0)]
+
+    for line in right_shape:
+        line.elasticity = 0.7
+        line.group = 1
+    space.add(right_shape)
+
     # "bumpers"
     #for p in [(240,500), (360,500)]:
     #    body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
@@ -118,7 +137,7 @@ def main():
                     l_flipper_body.apply_impulse_at_local_point(Vec2d.unit() * -40000, (-80,0))
                 elif event.type == KEYDOWN and event.key == K_b:
                     mass = 1
-                    radius = 8
+                    radius = 10
                     inertia = pymunk.moment_for_circle(mass, 0, radius, (0,0))
                     body = pymunk.Body(mass, inertia)
                     x = random.randint(350,600)
