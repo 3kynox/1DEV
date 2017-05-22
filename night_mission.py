@@ -10,7 +10,7 @@ __docformat__ = "reStructuredText"
 import sys, random, pygame
 from pygame.locals import *
 from pygame.color import *
-from drawStuff import *
+#from drawStuff import *
 from segments import *
 
 import pymunk
@@ -42,20 +42,20 @@ def main():
 
     drawSegments(space)
 
-    # "bumpers"
-    for p in [(460,570), (650,570), (550, 440)]:
-        body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
-        body.position = p
-        shape = pymunk.Circle(body, 13)
-        shape.elasticity = 1.5
-        space.add(shape)
-
-    for p in [(430,430), (550,520)]:
-        body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
-        body.position = p
-        shape = pymunk.Circle(body, 20)
-        shape.elasticity = 1.5
-        space.add(shape)
+    # # "bumpers"
+    # for p in [(460,570), (650,570), (550, 440)]:
+    #     body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+    #     body.position = p
+    #     shape = pymunk.Circle(body, 13)
+    #     shape.elasticity = 1.5
+    #     space.add(shape)
+    #
+    # for p in [(430,430), (550,520)]:
+    #     body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+    #     body.position = p
+    #     shape = pymunk.Circle(body, 20)
+    #     shape.elasticity = 1.5
+    #     space.add(shape)
 
     # Right flipper
     r_flipper_body = pymunk.Body(mass, moment)
@@ -88,7 +88,7 @@ def main():
     while running:
         ### Clear screen and draw stuff
         surface.fill((0, 0, 0))
-        drawStuff(surface)
+        #drawStuff(surface)
 
         # Define mouse position
         mouseX = pygame.mouse.get_pos()[1]

@@ -46,11 +46,11 @@ def drawStuff(surface):
     surface.blit(plane2, [760, 200])
 
     # Left border
-    pygame.draw.line(surface, White, [251,385],[250,768],4)
-    pygame.draw.polygon(surface, White, [[250,385],[265,380],[265,50],[280,30],[370,30],[420,0],[250,0]])
+    # pygame.draw.line(surface, White, [251,385],[250,768],4)
+    # pygame.draw.polygon(surface, White, [[250,385],[265,380],[265,50],[280,30],[370,30],[420,0],[250,0]])
 
     # Inner-left
-    pygame.draw.polygon(surface, Blue, [[266,375],[312,358],[266,260]])
+    # pygame.draw.polygon(surface, Blue, [[266,375],[312,358],[266,260]])
     pygame.draw.lines(surface, White, False, [[266,375],[312,358],[266,260]],4)
     pygame.draw.polygon(surface, Blue, [[340,520],[340,610],[335,620],[350,650],[385,660],[400,645]])
     pygame.draw.lines(surface, White, True, [[340,520],[340,610],[335,620],[350,650],[385,660],[400,645]], 3)
