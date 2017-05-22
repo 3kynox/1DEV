@@ -36,7 +36,9 @@ def drawSegments(space):
                     pymunk.Segment(space.static_body, (290, 680), (290, 510), 2),
                     pymunk.Segment(space.static_body, (290, 510), (328, 425), 2),
                     pymunk.Poly(b, [(330,427),(400,495),(400,495),(300,495)]),
-
+                    pymunk.Poly(b, [(393,580),(393,650),(410,660),(410,590)]),
+                    pymunk.Poly(b, [(350,700),(320,670),(320,520),(365,520),(365,660)]),
+                    pymunk.Poly(b, [(365,660), (400,685),(350,700)]),
                     pymunk.Poly(b,[(260,768),(260,740),(370,740),(420,768)]),
                     pymunk.Poly(b,[(745,768),(745,680),(740,680),(736,720),(715,768)])]
 
@@ -51,13 +53,21 @@ def drawSegments(space):
     blue_pols = [pymunk.Poly(b,[(265,392),(300,412),(265,500)]),
                 pymunk.Poly(b, [(720,500),(680,450),(720,400)]),
                 pymunk.Poly(b, [(720,410),(700,380),(720,310)]),
-                pymunk.Segment(space.static_body, (720,0),(720,640),1)
+                pymunk.Segment(space.static_body, (720,0),(720,620),1)
     ]
 
     for pol in blue_pols:
         pol.elasticity = 0.7
         pol.color = Blue
     space.add(blue_pols)
+
+    green_pols = [pymunk.Segment(space._static_body, (396,495), (396,600),4)
+    ]
+
+    for pol in green_pols:
+        pol.elasticity = 0.7
+        pol.color = Green
+    space.add(green_pols)
 
 
     left_shape = [pymunk.Segment(space.static_body, (280, 258), (280, 168), 1.0),
