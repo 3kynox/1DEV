@@ -35,10 +35,16 @@ def drawSegments(space):
                     pymunk.Segment(space.static_body, (697, 382), (718, 309), 2),
                     pymunk.Segment(space.static_body, (290, 680), (290, 510), 2),
                     pymunk.Segment(space.static_body, (290, 510), (328, 425), 2),
-                    pymunk.Poly(b, [(330,427),(400,495),(400,495),(300,495)]),
+                    pymunk.Segment(space.static_body, (460, 650), (460, 610), 3),
+                    pymunk.Segment(space.static_body, (500, 660), (500, 620), 3),
+                    pymunk.Segment(space.static_body, (540, 670), (540, 630), 3),
+                    pymunk.Segment(space.static_body, (580, 670), (580, 630), 3),
+                    pymunk.Segment(space.static_body, (620, 660), (620, 620), 3),
+                    pymunk.Segment(space.static_body, (660, 650), (660, 610), 3),
+                    pymunk.Segment(space.static_body, (430, 550), (430, 520), 2),
+                    pymunk.Segment(space.static_body, (400, 495), (297, 495), 4),
+                    pymunk.Poly(b, [(330,427),(400,490),(400,490),(300,490)]),
                     pymunk.Poly(b, [(393,580),(393,650),(410,660),(410,590)]),
-                    pymunk.Poly(b, [(350,700),(320,670),(320,520),(365,520),(365,660)]),
-                    pymunk.Poly(b, [(365,660), (400,685),(350,700)]),
                     pymunk.Poly(b,[(260,768),(260,740),(370,740),(420,768)]),
                     pymunk.Poly(b,[(745,768),(745,680),(740,680),(736,720),(715,768)])]
 
@@ -61,7 +67,9 @@ def drawSegments(space):
         pol.color = Blue
     space.add(blue_pols)
 
-    green_pols = [pymunk.Segment(space._static_body, (396,495), (396,600),4)
+    green_pols = [pymunk.Segment(space._static_body, (396,498), (396,600),4),
+                pymunk.Segment(space._static_body, (305,487), (390,487),4),
+                pymunk.Segment(space._static_body, (315,465), (363,465),6)
     ]
 
     for pol in green_pols:
@@ -113,3 +121,18 @@ def drawSegments(space):
         line.elasticity = 1.2
         line.group = 1
     space.add(left_right_panes)
+
+        ## bumpers
+    for p in [(460,570), (650,570), (550, 440)]:
+        body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+        body.position = p
+        shape = pymunk.Circle(body, 13)
+        shape.elasticity = 1.5
+        space.add(shape)
+
+    for p in [(430,430), (550,520)]:
+        body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+        body.position = p
+        shape = pymunk.Circle(body, 20)
+        shape.elasticity = 1.5
+        space.add(shape)
