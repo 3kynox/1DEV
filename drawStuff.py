@@ -49,19 +49,15 @@ def drawStuff(surface):
     pygame.draw.polygon(surface, Blue, [[340,520],[340,610],[335,620],[350,650],[385,660],[400,645]])
     pygame.draw.rect(surface, Purple, [254,520,30,10])
     pygame.draw.rect(surface, Purple, [300,520,30,10])
-    pygame.draw.line(surface, Purple, [254,510],[254,540], 2)
-    pygame.draw.line(surface, Purple, [275,510],[275,600], 2)
     pygame.draw.line(surface, Purple, [280,530],[302,530], 2)
     pygame.draw.line(surface, Purple, [280,523],[333,523], 2)
-    pygame.draw.line(surface, Purple, [300,510],[300,540], 2)
-    pygame.draw.line(surface, Purple, [320,510],[320,540], 2)
     pygame.draw.line(surface, Blue, [333,523],[338,523], 2)
     pygame.draw.line(surface, Green, [265,535],[265,545], 2)
     pygame.draw.line(surface, Green, [290,535],[290,545], 2)
-    pygame.draw.line(surface, Green, [314,535],[314,545], 2)
-    pygame.draw.line(surface, Red, [333,535],[333,545], 2)
-    surface.blit(font3.render('D    R   O   P', True, White),[260,505])
-    surface.blit(pygame.transform.rotate(font3.render('300', True, Green),270),[310,555])
+    pygame.draw.line(surface, Green, [310,535],[310,545], 2)
+    pygame.draw.line(surface, Red, [330,535],[330,545], 2)
+    surface.blit(font3.render('D    R   O  P', True, White),[259,505])
+    surface.blit(pygame.transform.rotate(font3.render('300', True, Green),270),[305,555])
     surface.blit(font3.render('LIT', True, Green),[280,480])
     surface.blit(font3.render('5000', True, Green),[275,465])
 
@@ -74,12 +70,11 @@ def drawStuff(surface):
 
 
     ## right trigger
-    #pygame.draw.polygon(surface, Green, [[590,690],[635,690],[635,705],[640,690],[688,690],[688,655]])
+    pygame.draw.polygon(surface, Green, [[590,690],[630,690],[640,705],[640,690],[688,690],[688,655]])
 
 
     ## left trigger
-
-    # pygame.draw.polygon(surface, Green, [[300,600],[300,690],[340,690],[340,705],[350,690],[400,690],[330,670]])
+    pygame.draw.polygon(surface, Green, [[300,600],[300,690],[340,690],[340,705],[350,690],[400,690],[330,670]])
 
     ## Top-left module
     pygame.draw.polygon(surface, White, [[318,240],[365,240],[365,120],[380,100],[410,80],[350,70],[318,100]])

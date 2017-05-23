@@ -43,11 +43,18 @@ def drawSegments(space):
                     pymunk.Segment(space.static_body, (660, 650), (660, 610), 3),
                     pymunk.Segment(space.static_body, (430, 550), (430, 520), 2),
                     pymunk.Segment(space.static_body, (400, 495), (297, 495), 4),
+                    pymunk.Segment(space.static_body, (318, 670), (318, 527), 1),
+                    pymunk.Segment(space.static_body, (318, 527), (365, 527), 1),
+                    pymunk.Segment(space.static_body, (366, 527), (366, 650), 1),
+                    pymunk.Segment(space.static_body, (366, 650), (380, 667), 1),
+                    pymunk.Segment(space.static_body, (380, 667), (410, 690), 1),
+                    pymunk.Segment(space.static_body, (410, 690), (349, 699), 1),
+                    pymunk.Segment(space.static_body, (350, 699), (319, 670), 1),
+                    pymunk.Segment(space.static_body, (276, 168), (300, 168), 1.0),
                     pymunk.Poly(b, [(330,427),(400,490),(400,490),(300,490)]),
                     pymunk.Poly(b, [(393,580),(393,650),(410,660),(410,590)]),
                     pymunk.Poly(b,[(260,768),(260,740),(370,740),(420,768)]),
                     pymunk.Poly(b,[(745,768),(745,680),(740,680),(736,720),(715,768)])]
-
 
     for line in global_walls:
         line.elasticity = 0.7
@@ -67,29 +74,27 @@ def drawSegments(space):
         pol.color = Blue
     space.add(blue_pols)
 
-    green_pols = [pymunk.Segment(space._static_body, (396,498), (396,600),4),
+        ## Green lines
+    green_lines = [pymunk.Segment(space._static_body, (396,498), (396,600),4),
                 pymunk.Segment(space._static_body, (305,487), (390,487),4),
                 pymunk.Segment(space._static_body, (315,465), (363,465),6)
     ]
 
-    for pol in green_pols:
+    for pol in green_lines:
         pol.elasticity = 0.7
         pol.color = Green
-    space.add(green_pols)
+    space.add(green_lines)
 
 
-    left_shape = [pymunk.Segment(space.static_body, (280, 258), (280, 168), 1.0),
-                   pymunk.Segment(space.static_body, (280, 168), (300, 168), 1.0),
-                   pymunk.Segment(space.static_body, (300, 168), (330, 100), 1.0),
-                   pymunk.Segment(space.static_body, (330, 100), (375, 87), 1.0),
-                   pymunk.Segment(space.static_body, (340, 248), (340, 158), 1.0),
-                   pymunk.Segment(space.static_body, (340, 158), (335, 147), 1.0),
-                   pymunk.Segment(space.static_body, (335, 147), (350, 118), 1.0),
-                   pymunk.Segment(space.static_body, (350, 118), (385, 108), 1.0),
-                   pymunk.Segment(space.static_body, (350, 118), (385, 108), 1.0),
-                   pymunk.Segment(space.static_body, (385, 108), (400, 123), 1.0),
-                   pymunk.Segment(space.static_body, (303, 258), (303, 228), 1.0),
-                   pymunk.Segment(space.static_body, (325, 258), (325, 228), 1.0)]
+    left_shape = [pymunk.Segment(space.static_body, (300, 168), (330, 100), 1.0),
+                  pymunk.Segment(space.static_body, (330, 100), (375, 87), 1.0),
+                  pymunk.Segment(space.static_body, (340, 248), (340, 158), 1.0),
+                  pymunk.Segment(space.static_body, (340, 158), (335, 147), 1.0),
+                  pymunk.Segment(space.static_body, (335, 147), (350, 118), 1.0),
+                  pymunk.Segment(space.static_body, (350, 118), (385, 108), 1.0),
+                  pymunk.Segment(space.static_body, (350, 118), (385, 108), 1.0),
+                  pymunk.Segment(space.static_body, (385, 108), (400, 123), 1.0)]
+
 
     for line in left_shape:
         line.elasticity = 0.7
@@ -136,3 +141,12 @@ def drawSegments(space):
         shape = pymunk.Circle(body, 20)
         shape.elasticity = 1.5
         space.add(shape)
+
+    purple_lines = [pymunk.Segment(space.static_body, (300, 258), (300, 228), 1.0),
+                    pymunk.Segment(space.static_body, (320, 258), (320, 228), 1.0),
+                    pymunk.Segment(space.static_body, (276, 258), (276, 168), 1.0)]
+
+    for line in purple_lines:
+        line.elasticity = 0.7
+        line.color = Purple
+    space.add(purple_lines)
