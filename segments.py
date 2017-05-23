@@ -77,17 +77,28 @@ def drawSegments(space):
         ## Green lines
     green_lines = [pymunk.Segment(space._static_body, (396,498), (396,600),4),
                 pymunk.Segment(space._static_body, (305,487), (390,487),4),
-                pymunk.Segment(space._static_body, (315,465), (363,465),6)
-    ]
+                pymunk.Segment(space._static_body, (315,465), (363,465),6),
+                pymunk.Segment(space._static_body, (687,110), (687,200),4)]
 
     for pol in green_lines:
         pol.elasticity = 0.7
         pol.color = Green
     space.add(green_lines)
 
+        ## Purple lines
+    purple_lines = [pymunk.Segment(space.static_body, (300, 258), (300, 228), 1.0),
+                    pymunk.Segment(space.static_body, (320, 258), (320, 228), 1.0),
+                    pymunk.Segment(space.static_body, (276, 258), (276, 168), 1.0)]
 
-    left_shape = [pymunk.Segment(space.static_body, (300, 168), (330, 100), 1.0),
-                  pymunk.Segment(space.static_body, (330, 100), (375, 87), 1.0),
+    for line in purple_lines:
+        line.elasticity = 0.7
+        line.color = Purple
+    space.add(purple_lines)
+
+
+    left_shape = [pymunk.Segment(space.static_body, (300, 168), (329, 100), 1.0),
+                  pymunk.Segment(space.static_body, (329, 99), (375, 87), 1.0),
+                        ## blue pol solid state
                   pymunk.Segment(space.static_body, (340, 248), (340, 158), 1.0),
                   pymunk.Segment(space.static_body, (340, 158), (335, 147), 1.0),
                   pymunk.Segment(space.static_body, (335, 147), (350, 118), 1.0),
@@ -95,19 +106,21 @@ def drawSegments(space):
                   pymunk.Segment(space.static_body, (350, 118), (385, 108), 1.0),
                   pymunk.Segment(space.static_body, (385, 108), (400, 123), 1.0)]
 
-
     for line in left_shape:
         line.elasticity = 0.7
         line.group = 1
     space.add(left_shape)
 
-    right_shape = [pymunk.Segment(space.static_body, (740, 118), (680, 118), 1.0),
-                   pymunk.Segment(space.static_body, (680, 118), (680, 114), 1.0),
-                   pymunk.Segment(space.static_body, (680, 114), (605, 86), 1.0),
-                   pymunk.Segment(space.static_body, (650, 248), (660, 228), 1.0),
-                   pymunk.Segment(space.static_body, (660, 228), (660, 128), 1.0),
-                   pymunk.Segment(space.static_body, (660, 128), (610, 108), 1.0),
-                   pymunk.Segment(space.static_body, (610, 108), (590, 133), 1.0),
+    right_shape = [pymunk.Segment(space.static_body, (745, 118), (695, 118), 1),
+                   pymunk.Segment(space.static_body, (693, 78), (693, 118), 2),
+                   #pymunk.Segment(space.static_body, (680, 118), (680, 114), 1.0),
+                   #pymunk.Segment(space.static_body, (680, 114), (605, 86), 1.0),
+                        ## blue pol solid state
+                   pymunk.Segment(space.static_body, (650, 248), (660, 228), 1),
+                   pymunk.Segment(space.static_body, (660, 228), (660, 128), 1),
+                   pymunk.Segment(space.static_body, (660, 128), (610, 108), 1),
+                   pymunk.Segment(space.static_body, (610, 108), (590, 133), 1),
+                        ## purple pol solid state
                    pymunk.Segment(space.static_body, (680, 298), (690, 270), 1.0),
                    pymunk.Segment(space.static_body, (690, 270), (690, 240), 1.0),
                    pymunk.Segment(space.static_body, (690, 240), (670, 278), 1.0),
@@ -141,12 +154,3 @@ def drawSegments(space):
         shape = pymunk.Circle(body, 20)
         shape.elasticity = 1.5
         space.add(shape)
-
-    purple_lines = [pymunk.Segment(space.static_body, (300, 258), (300, 228), 1.0),
-                    pymunk.Segment(space.static_body, (320, 258), (320, 228), 1.0),
-                    pymunk.Segment(space.static_body, (276, 258), (276, 168), 1.0)]
-
-    for line in purple_lines:
-        line.elasticity = 0.7
-        line.color = Purple
-    space.add(purple_lines)

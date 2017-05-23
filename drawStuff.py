@@ -70,7 +70,7 @@ def drawStuff(surface):
 
 
     ## right trigger
-    pygame.draw.polygon(surface, Green, [[590,690],[630,690],[640,705],[640,690],[688,690],[688,655]])
+    pygame.draw.polygon(surface, Green, [[590,690],[630,690],[640,705],[640,690],[693,690],[693,655]])
 
 
     ## left trigger
